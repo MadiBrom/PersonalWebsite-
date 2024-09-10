@@ -1,5 +1,6 @@
 #root {
-  min-height: 50vh; /* Example height; adjust according to your content */
+  min-height: 100vh;
+  height: auto; /* Example height; adjust according to your content */
 }
 /* General reset */
 * {
@@ -21,7 +22,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 200vh;
+  height: 100vh;
   z-index: -1;
   pointer-events: none;
 }
