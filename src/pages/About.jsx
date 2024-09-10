@@ -161,7 +161,7 @@ const About = () => {
         <h4>Position:</h4>
         <p>LBS1</p>
         <h4>Duration:</h4>
-        <p>August 2023 - June 2024</p>
+        <p>August 2022 - December 2022</p>
         <br />
         <h4>Responsibilities:</h4>
         <ul id="responsible">
