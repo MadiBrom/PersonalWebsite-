@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <div id="root"></div>
+    <div class="starfield"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      const starCount = 1000; // Number of stars
+      const stars = [];
+      const attractionStrength = 100;
+
+      // Create stars randomly placed across the screen with random sizes and movement
+      function createStars() {
+        const starfield = document.querySelector(".starfield");
+
+        for (let i = 0; i < starCount; i++) {
+          const star = document.createElement("div");
+          star.classList.add("star");
+
+          // Random position
+          star.style.top = `${Math.random() * 100}vh`;
+          star.style.left = `${Math.random() * 100}vw`;
+
+          // Random size for each star
+          const size = Math.random() * 6 + 1; // Stars between 1px and 4px in size
+          star.style.width = `${size}px`;
+          star.style.height = `${size}px`;
+
+          // Random animation direction and distance
+          const xMove = `${Math.random() * 40 - 20}vw`; // Move between -100vw and 100vw
+          const yMove = `${Math.random() * 40 - 20}vh`; // Move between -100vh and 100vh
+          const duration = Math.random() * 30000 + 300; // Animation duration between 5 and 15 seconds
+
+          star.style.setProperty("--x-move", xMove);
+          star.style.setProperty("--y-move", yMove);
+
+          // Apply the float animation
+          star.style.animation = `float ${duration}s infinite alternate ease-in-out`;
+
+          starfield.appendChild(star);
+          stars.push(star);
+        }
+      }
+
+      createStars();
+
+      // Brighten stars when the mouse is near
+      document.addEventListener("mousemove", function (e) {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        stars.forEach((star) => {
+          const starX =
+            star.getBoundingClientRect().left + star.offsetWidth / 2;
+          const starY =
+            star.getBoundingClientRect().top + star.offsetHeight / 2;
+
+          const distance = Math.sqrt(
+            Math.pow(mouseX - starX, 2) + Math.pow(mouseY - starY, 2)
+          );
+
+          // If the mouse is near the star, make it brighter and larger
+          if (distance < 100) {
+            star.style.opacity = 1;
+            star.style.transform = `scale(2)`; // Increase the size on hover
+          } else {
+            star.style.opacity = 0.4;
+            star.style.transform = `scale(1)`; // Reset the scale when far from the mouse
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
