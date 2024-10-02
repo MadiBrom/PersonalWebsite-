@@ -56,7 +56,6 @@ body {
   display: flex;
   justify-content: flex-end;
   padding: 20px 50px;
-  background-color: rgba(211, 210, 210, 0.1);
 }
 
 .nav-buttons {
@@ -104,6 +103,12 @@ body {
 }
 
 /* ID Card Style Container */
+.about-page {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  max-width: 1200px;
+}
 .id-card-container {
   display: flex;
   justify-content: space-between;
@@ -113,7 +118,7 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-  max-width: 1200px;
+  max-width: 2500px;
   flex-wrap: wrap;
 }
 
@@ -123,6 +128,7 @@ body {
   padding-right: 20px;
   display: flex;
   justify-content: center;
+  margin-right: 40px;
 }
 
 .id-card-container img {
@@ -147,18 +153,32 @@ body {
   padding-bottom: 10px;
   text-shadow: 2px 2px 4px #000;
 }
-
+#name {
+  margin-bottom: 10px;
+  font-size: 4.5rem;
+  font-family: "Nabla", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "EDPT" 100, "EHLT" 12;
+}
 .id-card-container .text-container h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   padding-bottom: 10px;
   text-shadow: 2px 2px 4px #000;
   text-decoration: overline;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
 .id-card-container .text-container p {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   text-shadow: 2px 2px 4px #000;
   line-height: 1.8;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* Responsive Design */
