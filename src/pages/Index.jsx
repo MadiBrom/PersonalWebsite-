@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/navbar";
-import IMG from "../Profile2.jpg";
+import IMG from "../images/Profile2.jpg";
 import Footer from "../components/footer";
 
 const Index = () => {

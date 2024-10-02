@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import Modal from "../components/TeachingModal";
 import Slideshow from "../components/Slideshow";
-import IMG from "../Profile2.jpg";
-import IMG2 from "../Avatar.jpg";
-import HUB from "../hub.png";
-import NIU from "../niu-logo-red.jpg";
+import IMG from "../images/peacock.jpg";
+import IMG2 from "../images/baby.jpg";
+import IMG3 from "../images/broken.jpg";
+import IMG4 from "../images/crabapple.jpg";
+import IMG5 from "../images/lion.jpg";
+import IMG6 from "../images/nani2.jpg";
+import HUB from "../images/hub.png";
+import NIU from "../images/niu-logo-red.jpg";
+import FS from "../images/fullstack.png";
 import Footer from "../components/footer";
 
 const About = () => {
-  const images = [IMG, IMG2];
+  const images = [IMG, IMG2, IMG3, IMG4, IMG5, IMG6];
 
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
@@ -41,7 +46,7 @@ const About = () => {
             <div id="professional-container">
               <h2>Professional</h2>
               <section className="professional">
-                <h3>Photography</h3>
+                <h3>Art</h3>
                 <button onClick={handleOpenSlideshowModal}>
                   View Slideshow
                 </button>
@@ -78,10 +83,7 @@ const About = () => {
                     <h6>2024</h6>
                   </div>
                   <div id="image">
-                    <img
-                      src="https://scontent-ord5-1.xx.fbcdn.net/v/t39.30808-6/244607226_4976383192391443_8852424966271916005_n.png?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=QxJobbx6M3cQ7kNvgEu9ogg&_nc_ht=scontent-ord5-1.xx&oh=00_AYC4w7j1GuG4RCWCgx5lIyvTXPOJm-HWbNTSBIezMuBXaQ&oe=66E5AE27"
-                      alt="FS"
-                    />
+                    <img src={FS} alt="FS" />
                   </div>
                 </div>
               </section>
