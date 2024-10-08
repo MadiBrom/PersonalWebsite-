@@ -21,7 +21,7 @@ function createStars() {
     // Random animation direction and distance
     const xMove = `${Math.random() * 40 - 20}vw`; // Move between -100vw and 100vw
     const yMove = `${Math.random() * 40 - 20}vh`; // Move between -100vh and 100vh
-    const duration = Math.random() * 30000 + 300; // Animation duration between 5 and 15 seconds
+    const duration = Math.random() * 30000 + 300;
 
     star.style.setProperty("--x-move", xMove);
     star.style.setProperty("--y-move", yMove);
@@ -38,16 +38,6 @@ function createStars() {
 }
 
 createStars();
-
-// Function to generate a random color
-function getRandomColor() {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
 
 // Brighten stars and change their color when the mouse is near
 document.addEventListener("mousemove", function (e) {
@@ -69,7 +59,6 @@ document.addEventListener("mousemove", function (e) {
 
       // Change to a random color only if it hasn't been hovered before
       if (star.dataset.hovered === "false") {
-        star.style.backgroundColor = getRandomColor();
         star.dataset.hovered = "true"; // Mark the star as hovered
       }
     } else {
