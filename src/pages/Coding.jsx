@@ -2,27 +2,6 @@ import React, { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import Navbar from "../components/navbar";
 
-const projects = [
-  {
-    title: "Fidget App",
-    description:
-      "A fun app with fidget themed backgrounds. They are user friendly, and prompote sitting for hours playing as your mouse.",
-    link: "#",
-  },
-  {
-    title: "Yarnia",
-    description:
-      "An app dedicated to connecting readers and writers. Utilizing a rich text editor and interactive users, Yarnia provides a space for writers and readers to enjoy content.",
-    link: "#",
-  },
-  {
-    title: "WolffPack",
-    description:
-      "An interactive, user friendly fitness app. Created to connect users through their shared love for fitness. It is a space wwhere you can find workout packages, healthy snacks, and connection to your very own personal trainer.",
-    link: "#",
-  },
-];
-
 // Star confetti settings
 const confettiSettings = {
   spread: 360,
@@ -48,9 +27,121 @@ function shootConfetti() {
   });
 }
 
+const projects = [
+  {
+    title: "Fidget App",
+    description:
+      "A fun app with fidget themed backgrounds. They are user friendly, and promote sitting for hours playing as your mouse.",
+    image: "https://via.placeholder.com/600", // Replace with actual image URL
+    githubLink: "https://github.com/MadiBrom/Testing",
+  },
+  {
+    title: "Yarnia",
+    description:
+      "An app dedicated to connecting readers and writers. Utilizing a rich text editor and interactive users, Yarnia provides a space for writers and readers to enjoy content.",
+    image: "https://via.placeholder.com/600", // Replace with actual image URL
+    githubLink: "https://github.com/margonautix/yarnia.CAPSTONE",
+  },
+  {
+    title: "WolffPack",
+    description:
+      "An interactive, user-friendly fitness app. Created to connect users through their shared love for fitness. It is a space where you can find workout packages, healthy snacks, and connection to your very own personal trainer.",
+    image: "https://via.placeholder.com/600", // Replace with actual image URL
+    githubLink: "https://github.com/DAlbanese5/Wolffpack-fitness",
+  },
+  {
+    title: "Book Buddy",
+    description:
+      "A project that was done during my education. It has many basic features of a user friendly website.",
+    image: "https://via.placeholder.com/600", // Replace with actual image URL
+    githubLink: "https://github.com/MadiBrom/bookbuddy",
+  },
+];
+
+// Modal component to show project details
+const Modal = ({ isOpen, onClose, project }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div style={modalStyles.overlay}>
+      <div style={modalStyles.modal}>
+        <h2>{project.title}</h2>
+        <img
+          src={project.image}
+          alt={project.title}
+          style={modalStyles.image}
+        />
+        <a
+          href={project.githubLink}
+          style={modalStyles.link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View on GitHub
+        </a>
+        <button onClick={onClose} style={modalStyles.closeButton}>
+          X
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const modalStyles = {
+  overlay: {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: "rgba(0, 0, 0, 0.7)", // Semi-transparent black overlay
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modal: {
+    backgroundColor: "rgba(51, 51, 51, 0.55)", // Dark grey with some transparency
+    padding: "40px",
+    borderRadius: "10px",
+    width: "100%",
+    maxWidth: "700px",
+    textAlign: "center",
+    color: "#fff", // Make text white for contrast against dark background
+    position: "relative", // Make the modal a positioned element
+  },
+  image: {
+    maxWidth: "100%",
+    borderRadius: "10px",
+    marginBottom: "20px",
+  },
+  link: {
+    display: "inline-block",
+    padding: "10px 20px",
+    backgroundColor: "#6200FF",
+    color: "#fff",
+    textDecoration: "none",
+    borderRadius: "5px",
+    marginBottom: "20px",
+  },
+  closeButton: {
+    position: "absolute",
+    top: "10px",
+    right: "10px",
+    backgroundColor: "#6200FF",
+    color: "#fff",
+    padding: "10px 15px",
+    borderRadius: "50%", // Make it a round button
+    border: "none",
+    cursor: "pointer",
+    fontSize: "16px", // Adjust font size for better visibility
+  },
+};
+
 const Coding = () => {
   const [showProjects, setShowProjects] = useState(false);
   const [hideWelcome, setHideWelcome] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     // Trigger star confetti when the welcome message appears
@@ -71,6 +162,16 @@ const Coding = () => {
       clearTimeout(hideWelcomeTimer); // Cleanup both timers when the component unmounts
     };
   }, []);
+
+  const openModal = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+  };
 
   return (
     <>
@@ -96,14 +197,26 @@ const Coding = () => {
               >
                 <h3 style={styles.projectTitle}>{project.title}</h3>
                 <p style={styles.projectDescription}>{project.description}</p>
-                <a href={project.link} style={styles.projectLink}>
+                <button
+                  onClick={() => openModal(project)}
+                  style={styles.projectLink}
+                >
                   View Project
-                </a>
+                </button>
               </div>
             ))}
           </div>
         )}
-      </div>{" "}
+
+        {/* Render the modal when a project is selected */}
+        {selectedProject && (
+          <Modal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            project={selectedProject}
+          />
+        )}
+      </div>
     </>
   );
 };
