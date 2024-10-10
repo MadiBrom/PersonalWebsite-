@@ -5,17 +5,20 @@ import Navbar from "../components/navbar";
 const projects = [
   {
     title: "Fidget App",
-    description: "A fun app with space-themed confetti.",
+    description:
+      "A fun app with fidget themed backgrounds. They are user friendly, and prompote sitting for hours playing as your mouse.",
     link: "#",
   },
   {
     title: "Yarnia",
-    description: "A calculator inspired by the stars.",
+    description:
+      "An app dedicated to connecting readers and writers. Utilizing a rich text editor and interactive users, Yarnia provides a space for writers and readers to enjoy content.",
     link: "#",
   },
   {
-    title: "Star Tracker",
-    description: "Track constellations and planets.",
+    title: "WolffPack",
+    description:
+      "An interactive, user friendly fitness app. Created to connect users through their shared love for fitness. It is a space wwhere you can find workout packages, healthy snacks, and connection to your very own personal trainer.",
     link: "#",
   },
 ];
@@ -28,7 +31,7 @@ const confettiSettings = {
   decay: 0.94,
   startVelocity: 30,
   shapes: ["star"],
-  colors: ["#FF00FF", "#9400D3", "#D8BFD8", "#FFFFFF", "#8A2BE2"],
+  colors: ["#6200FF", "#8A00FF", "#D8BFD8", "#FFFFFF", "#460080"],
 };
 
 function shootConfetti() {
@@ -47,29 +50,41 @@ function shootConfetti() {
 
 const Coding = () => {
   const [showProjects, setShowProjects] = useState(false);
+  const [hideWelcome, setHideWelcome] = useState(false);
 
   useEffect(() => {
     // Trigger star confetti when the welcome message appears
     shootConfetti();
 
-    // Set a timer to show the projects after 3 seconds and fade out the welcome message
-    const timer = setTimeout(() => {
+    // Show projects after 3 seconds
+    const showProjectsTimer = setTimeout(() => {
       setShowProjects(true);
     }, 3000);
 
-    return () => clearTimeout(timer); // Cleanup timer when component unmounts
+    // Hide welcome message after 8 seconds
+    const hideWelcomeTimer = setTimeout(() => {
+      setHideWelcome(true);
+    }, 8000); // Set longer delay for welcome message to disappear
+
+    return () => {
+      clearTimeout(showProjectsTimer);
+      clearTimeout(hideWelcomeTimer); // Cleanup both timers when the component unmounts
+    };
   }, []);
 
   return (
     <>
       <Navbar />
       <div style={styles.container}>
-        <h1
-          style={showProjects ? styles.hidden : styles.welcomeText}
-          className="fade-out"
-        >
-          Welcome to My Coding!
-        </h1>
+        {/* Show the welcome message for a longer period before hiding */}
+        {!hideWelcome && (
+          <h1
+            style={showProjects ? styles.welcomeText : styles.welcomeText}
+            className="fade-out"
+          >
+            Welcome to My Coding!
+          </h1>
+        )}
 
         {showProjects && (
           <div style={styles.projectContainer}>
@@ -106,10 +121,16 @@ const styles = {
     backgroundPosition: "0 0, 40px 40px",
   },
   welcomeText: {
-    fontSize: "3rem",
-    color: "#FF00FF", // Neon purple accent
+    fontSize: "5rem", // Increased font size for prominence
+    color: "#6200FF", // Updated neon purple accent
     textShadow: "2px 2px 4px rgba(255, 255, 255, 0.6)",
     opacity: 1,
+    textAlign: "center", // Center text horizontally
+    margin: "0", // Remove default margins
+    position: "absolute", // Ensure it stays centered
+    top: "50%", // Vertically center
+    left: "50%", // Horizontally center
+    transform: "translate(-50%, -50%)", // Translate to perfectly center
     transition: "opacity 2s ease-in-out",
   },
   hidden: {
@@ -117,13 +138,17 @@ const styles = {
     transition: "opacity 2s ease-in-out",
   },
   projectContainer: {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
-    gap: "20px",
+    display: "flex", // Use flexbox for centering the cards
+    flexDirection: "column", // Ensure the cards stack vertically
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "40px", // Space between cards
     padding: "40px",
+    height: "100vh", // Ensure full height is taken up to center the content vertically
+    width: "100vw",
   },
   projectCard: {
-    backgroundColor: "#2C2C54",
+    backgroundColor: "#2C2C54", // Deep space color
     borderRadius: "15px",
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     overflow: "hidden",
@@ -131,21 +156,28 @@ const styles = {
     transition: "transform 0.3s, box-shadow 0.3s",
     cursor: "pointer",
     textAlign: "center",
+    height: "300px",
+    width: "600px", // Size you specified
+    display: "flex",
+    flexDirection: "column", // Ensure content is stacked vertically
+    justifyContent: "center", // Center content inside the card
+    alignItems: "center", // Horizontally center the content
   },
   projectTitle: {
     fontSize: "1.5rem",
-    color: "#FF00FF", // Neon purple
+    color: "#6200FF", // Updated neon purple for project titles
     marginBottom: "10px",
+    textShadow: "2px 2px 1px black",
   },
   projectDescription: {
     fontSize: "1rem",
-    color: "#D8BFD8",
+    color: "#D8BFD8", // Softer purple description text
     marginBottom: "20px",
   },
   projectLink: {
     fontSize: "1rem",
     color: "#FFFFFF",
-    backgroundColor: "#FF00FF",
+    backgroundColor: "#6200FF", // Neon purple background
     padding: "10px 15px",
     borderRadius: "5px",
     textDecoration: "none",
@@ -162,7 +194,7 @@ styleSheet.innerHTML = `
   }
 
   .project-card:hover a {
-    background-color: #9400D3;
+    background-color: #8A00FF; /* Darker neon purple on hover */
   }
 
   .fade-out {
