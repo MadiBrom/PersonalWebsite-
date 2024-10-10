@@ -107,7 +107,7 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
-  max-width: 1200px;
+  max-width: 100%;
 }
 .id-card-container {
   display: flex;
@@ -118,7 +118,7 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
-  max-width: 2500px;
+  max-width: 3500px;
   flex-wrap: wrap;
 }
 
@@ -162,7 +162,8 @@ body {
   font-style: normal;
   font-variation-settings: "EDPT" 100, "EHLT" 12;
 }
-.id-card-container .text-container h2 {
+
+.text-container h2 {
   font-size: 3rem;
   padding-bottom: 10px;
   text-shadow: 2px 2px 4px #000;

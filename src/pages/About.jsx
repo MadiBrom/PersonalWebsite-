@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import Coding from "./Coding";
 import Navbar from "../components/navbar";
 import Modal from "../components/TeachingModal";
 import Slideshow from "../components/Slideshow";
@@ -15,6 +17,7 @@ import Footer from "../components/footer";
 
 const About = () => {
   const images = [IMG, IMG2, IMG3, IMG4, IMG5, IMG6];
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const [isModalOpen1, setIsModalOpen1] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
@@ -29,14 +32,14 @@ const About = () => {
   const handleCloseSlideshowModal = () => setIsSlideshowModalOpen(false);
 
   const handleCoding = () => {
-    alert("Under Construction!");
+    navigate("/coding"); // Navigate to the Coding component
   };
 
   return (
     <div>
       <Navbar />
       <div id="title">
-        <h1>Interests & Accomplishments</h1>
+        <h1 id="name2">Interests & Accomplishments</h1>
       </div>
 
       <section className="about-page">

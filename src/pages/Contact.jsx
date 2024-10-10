@@ -42,7 +42,6 @@ const Contact = () => {
               <label htmlFor="name">Name</label>
               <input
                 type="text"
-                id="name"
                 name="user_name"
                 placeholder="Your name"
                 required
