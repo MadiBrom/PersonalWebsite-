@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import Navbar from "../components/navbar";
+import "./coding.css"
 
 // Star confetti settings
 const confettiSettings = {
@@ -55,6 +56,13 @@ const projects = [
       "A project that was done during my education. It has many basic features of a user friendly website.",
     image: "https://via.placeholder.com/600", // Replace with actual image URL
     githubLink: "https://github.com/MadiBrom/bookbuddy",
+  },
+  {
+    title: "E-Com",
+    description:
+      "Mini games you can play for coins then soend on in game prizes.",
+    image: "https://via.placeholder.com/600", // Replace with actual image URL
+    githubLink: "https://github.com/MadiBrom/E-Com",
   },
 ];
 
@@ -176,30 +184,24 @@ const Coding = () => {
   return (
     <>
       <Navbar />
-      <div style={styles.container}>
-        {/* Show the welcome message for a longer period before hiding */}
+      <div className="container">
+        {/* Welcome Message */}
         {!hideWelcome && (
-          <h1
-            style={showProjects ? styles.welcomeText : styles.welcomeText}
-            className="fade-out"
-          >
+          <h1 className={`welcomeText ${showProjects ? "fade-out" : ""}`}>
             Welcome to My Coding!
           </h1>
         )}
-
+  
+        {/* Projects Grid */}
         {showProjects && (
-          <div style={styles.projectContainer}>
+          <div className="projectContainer">
             {projects.map((project, index) => (
-              <div
-                key={index}
-                style={styles.projectCard}
-                className="project-card"
-              >
-                <h3 style={styles.projectTitle}>{project.title}</h3>
-                <p style={styles.projectDescription}>{project.description}</p>
+              <div key={index} className="projectCard">
+                <h3 className="projectTitle">{project.title}</h3>
+                <p className="projectDescription">{project.description}</p>
                 <button
                   onClick={() => openModal(project)}
-                  style={styles.projectLink}
+                  className="projectLink"
                 >
                   View Project
                 </button>
@@ -207,8 +209,8 @@ const Coding = () => {
             ))}
           </div>
         )}
-
-        {/* Render the modal when a project is selected */}
+  
+        {/* Modal for Project Details */}
         {selectedProject && (
           <Modal
             isOpen={isModalOpen}
@@ -219,6 +221,7 @@ const Coding = () => {
       </div>
     </>
   );
+  
 };
 
 const styles = {
