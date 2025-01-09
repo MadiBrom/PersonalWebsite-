@@ -92,20 +92,6 @@ const About = () => {
               </section>
             </div>
           </div>
-
-          <div className="text-container">
-            <div id="personal-container">
-              <h2>Personal</h2>
-              <section className="personal">
-                <h3>Environmental</h3>
-                <p>Add details</p>
-                <h3>Travel</h3>
-                <p>Add details</p>
-                <h3>Crafting</h3>
-                <p>Add details</p>
-              </section>
-            </div>
-          </div>
         </div>
       </section>
 

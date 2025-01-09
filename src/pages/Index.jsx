@@ -1,18 +1,32 @@
 import React from "react";
+import { useSpring, animated } from "@react-spring/web";
 import Navbar from "../components/navbar";
 import IMG from "../images/Profile2.jpg";
 import Footer from "../components/footer";
 
 const Index = () => {
+  const fadeInFromLeft = useSpring({
+    from: { opacity: 0, transform: "translateX(-100%)" },
+    to: { opacity: 1, transform: "translateX(0)" },
+    config: { duration: 800 },
+  });
+
+  const fadeInFromRight = useSpring({
+    from: { opacity: 0, transform: "translateX(100%)" },
+    to: { opacity: 1, transform: "translateX(0)" },
+    config: { duration: 800 },
+  });
+
   return (
     <div>
       <Navbar />
 
       <div className="id-card-container">
-        <div className="image-container">
+        <animated.div className="image-container" style={fadeInFromLeft}>
           <img src={IMG} alt="Profile" />
-        </div>
-        <div className="text-container">
+        </animated.div>
+
+        <animated.div className="text-container" style={fadeInFromRight}>
           <h1 id="name">Madison Bromfield</h1>
           <h2>Web Developer & Educator</h2>
           <p>
@@ -26,8 +40,9 @@ const Index = () => {
             teams, I’m all about using technology to drive results. Let's build
             something amazing together!
           </p>
-        </div>
+        </animated.div>
       </div>
+
       <Footer />
     </div>
   );
