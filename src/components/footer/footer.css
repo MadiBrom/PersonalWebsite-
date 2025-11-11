@@ -24,3 +24,21 @@
   opacity: 1;
 }
 
+/* Mobile: place copyright under links and keep links on one line */
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .footer-links a {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,55 @@
+/* Snap-scrolling container for About */
+.about-snap {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.about-section {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  position: relative;
+}
+
+.about-section-inner {
+  width: 100%;
+  max-width: 1100px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  padding: 32px;
+}
+
+.about-section-title {
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 12px 0;
+}
+
+.about-section-content {
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.75;
+}
+
+.about-next {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(37, 5, 65, 0.877);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.about-next:hover {
+  background: #8a00ff;
+}

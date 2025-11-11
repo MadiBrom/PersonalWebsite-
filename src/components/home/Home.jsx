@@ -1,6 +1,6 @@
 import React from "react";
 import { useSpring, animated } from "@react-spring/web";
-import IMG from "../images/Profile2.jpg";
+import IMG from "./Profile2.jpg";
 import "./home.css";
 
 const Home = () => {
@@ -25,7 +25,7 @@ const Home = () => {
 
         <animated.div className="text-container" style={fadeInFromRight}>
           <h1 id="name">Madison Bromfield</h1>
-          <h2>Web Developer & Educator</h2>
+          <h2>Creative Computer & Educator</h2>
           <p>
             A problem solver at heart with a passion for coding and project
             management. With a background in education and a degree from
