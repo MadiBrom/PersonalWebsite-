@@ -1,7 +1,7 @@
 import React from "react";
 import { useSpring, animated } from "@react-spring/web";
-import Navbar from "../navbar/Navbar";
 import IMG from "../images/Profile2.jpg";
+import "./home.css";
 
 const Home = () => {
   const fadeInFromLeft = useSpring({
@@ -18,8 +18,6 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar />
-
       <div className="id-card-container">
         <animated.div className="image-container" style={fadeInFromLeft}>
           <img src={IMG} alt="Profile" />

@@ -4,19 +4,20 @@ import Home from "./components/home/Home";
 import About from "./components/about/About";
 import Coding from "./components/coding/Coding";
 import Contact from "./components/contact/Contact";
+import AppLayout from "./layouts/AppLayout";
 import "./index.css";
 
 function App() {
   return (
     <Router>
-      <div>
-        <Routes>
+      <Routes>
+        <Route element={<AppLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/coding" element={<Coding />} />
-        </Routes>
-      </div>
+        </Route>
+      </Routes>
     </Router>
   );
 }

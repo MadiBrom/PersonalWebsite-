@@ -1,0 +1,71 @@
+
+.id-card-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  padding: 40px;
+  margin: 48px auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  max-width: 1200px;
+}
+
+.image-container {
+  flex: 1 1 420px;
+  display: flex;
+  justify-content: center;
+}
+
+.image-container img {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.text-container {
+  flex: 2 1 520px;
+  color: #ffffff;
+  padding-left: 8px;
+}
+
+#name {
+  margin: 0 0 8px 0;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.text-container h2 {
+  margin: 0 0 12px 0;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  text-decoration: overline;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.text-container p {
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  line-height: 1.75;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 400;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 900px) {
+  .id-card-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+  }
+
+  .text-container {
+    padding-left: 0;
+    text-align: center;
+  }
+}
