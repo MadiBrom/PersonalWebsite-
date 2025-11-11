@@ -1,10 +1,9 @@
 import React from "react";
 import { useSpring, animated } from "@react-spring/web";
-import Navbar from "../components/navbar";
+import Navbar from "../navbar/Navbar";
 import IMG from "../images/Profile2.jpg";
-import Footer from "../components/footer";
 
-const Index = () => {
+const Home = () => {
   const fadeInFromLeft = useSpring({
     from: { opacity: 0, transform: "translateX(-100%)" },
     to: { opacity: 1, transform: "translateX(0)" },
@@ -42,10 +41,8 @@ const Index = () => {
           </p>
         </animated.div>
       </div>
-
-      <Footer />
     </div>
   );
 };
 
-export default Index;
+export default Home;

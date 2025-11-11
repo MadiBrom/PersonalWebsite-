@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
-import Navbar from "../components/navbar";
+import Navbar from "../navbar/Navbar";
 import "./coding.css"
 
-// Star confetti settings
+
 const confettiSettings = {
   spread: 360,
   ticks: 50,
