@@ -8,7 +8,7 @@ const projects = [
     tagline: "Tactile web toys for calm focus",
     description:
       "A collection of calming, interactive fidgets built to reduce noise and increase focus. Small reactions, gentle feedback, and accessible controls make it easy to decompress for a minute and reset.",
-    image: "https://via.placeholder.com/1200x800?text=Fidget+App",
+    image: "./previews/fidgets.png",
     githubLink: "https://github.com/MadiBrom/Fidgets",
     demoLink: "https://thedigitalrespite.netlify.app/",
     tech: ["React", "Vite", "Tailwind", "ARIA"],
