@@ -1,5 +1,5 @@
 import React from "react";
-import Coding from "./coding/Coding";
+import Coding from "../coding/Coding";
 import "./about.css";
 
 const SectionWrapper = ({ id, title, children, nextId }) => {
@@ -16,7 +16,9 @@ const SectionWrapper = ({ id, title, children, nextId }) => {
         <div className="about-section-content">{children}</div>
       </div>
       {nextId && (
-        <button className="about-next" onClick={scrollNext} aria-label="Next section">↓</button>
+        <button className="about-next" onClick={scrollNext} aria-label="Next section">
+          ↓
+        </button>
       )}
     </section>
   );
@@ -25,13 +27,12 @@ const SectionWrapper = ({ id, title, children, nextId }) => {
 const About = () => {
   return (
     <div className="about-snap">
-      <SectionWrapper id="education" title="Education" nextId="teaching">
+            <SectionWrapper id="education" title="Education" nextId="teaching">
         <p>
           Classroom leadership, individualized planning, and data-driven outcomes. Highlights,
           roles, and responsibilities to be added here.
         </p>
       </SectionWrapper>
-
       <SectionWrapper id="teaching" title="Teaching" nextId="coding">
         <p>
           Classroom leadership, individualized planning, and data-driven outcomes. Highlights,
@@ -40,7 +41,7 @@ const About = () => {
       </SectionWrapper>
 
       <SectionWrapper id="coding" title="Coding" nextId="art">
-        <Coding />
+<Coding/>
       </SectionWrapper>
 
       <SectionWrapper id="art" title="Art">
