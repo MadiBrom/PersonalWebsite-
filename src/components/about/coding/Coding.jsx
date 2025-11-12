@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
-import confetti from "canvas-confetti";
-import "./coding.css"
+import React, { useEffect } from "react";
+import "./coding.css";
 
 const projects = [
   {
-    title: "Fidget App",
+    title: "The Digital Respite",
     description:
-      "Sensory play, anytime. A simple platform of calming, interactive fidgets.",
+      "A tiny sensory playground for focus breaks. Built to calm the brain and keep hands busy so you can reset fast.",
     image: "https://via.placeholder.com/600",
-    githubLink: "https://github.com/MadiBrom/Testing",
+    githubLink: "https://github.com/MadiBrom/Fidgets",
   },
   {
     title: "Yarnia",
@@ -28,13 +27,28 @@ const projects = [
 
 
 const Coding = () => {
- 
+  useEffect(() => {
+    // no-op placeholder; could add animations later
+  }, []);
+
   return (
-    <>
-      
-    </>
+    <div className="projectContainer">
+      {projects.map((p, i) => (
+        <div key={i} className="projectCard">
+          <h3 className="projectTitle">{p.title}</h3>
+          <p className="projectDescription">{p.description}</p>
+          <a
+            className="projectLink"
+            href={p.githubLink}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View Project
+          </a>
+        </div>
+      ))}
+    </div>
   );
-  
 };
 
 export default Coding;
