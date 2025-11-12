@@ -140,8 +140,6 @@ const Card = ({ project, onQuickView }) => {
     const y = e.clientY - r.top;
     const midX = r.width / 2;
     const midY = r.height / 2;
-    const rx = ((y - midY) / midY) * -6; // tilt up down
-    const ry = ((x - midX) / midX) * 6;  // tilt left right
     el.style.setProperty("--rx", `${rx}deg`);
     el.style.setProperty("--ry", `${ry}deg`);
   };
@@ -181,9 +179,7 @@ const Card = ({ project, onQuickView }) => {
                 <LinkIcon /> Preview
               </a>
             ) : (
-              <button className="btn" onClick={() => onQuickView(project)}>
-                Details
-              </button>
+              <></>
             )}
           </div>
         </div>

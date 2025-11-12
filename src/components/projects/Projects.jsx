@@ -1,7 +1,7 @@
-import React from "react";
-import Teaching from "./teaching/Teaching";
-import Education from "./education/Education";
-import "./about.css";
+import React from 'react';
+import Coding from './coding/Coder';
+import Art from './art/Art';
+import "./projects.css";  
 
 const SectionWrapper = ({ id, title, children, nextId }) => {
   const scrollNext = () => {
@@ -23,19 +23,19 @@ const SectionWrapper = ({ id, title, children, nextId }) => {
   );
 };
 
-const About = () => {
+const Projects = () => {
   return (
     <div className="about-snap">
-      <SectionWrapper id="education" title="Education" nextId="teaching">
-        <Education />
+      <SectionWrapper id="coding" title="Coding" nextId="art">
+        <Coding />
       </SectionWrapper>
 
-      <SectionWrapper id="teaching" title="Teaching">
-        <Teaching />
+      <SectionWrapper id="art" title="Art">
+        <Art />
       </SectionWrapper>
     </div>
   );
 };
 
-export default About;
+export default Projects;
 

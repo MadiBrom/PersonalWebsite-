@@ -1,5 +1,5 @@
 import React from 'react'
-import "./teaching.css"
+import "./art.css"
 
 const Art = () => {
   return (
