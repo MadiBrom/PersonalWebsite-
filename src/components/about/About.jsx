@@ -1,5 +1,5 @@
 import React from "react";
-import Coding from "./coding/Coding";
+import Coding from "../about/coding/Coder";
 import "./about.css";
 
 const SectionWrapper = ({ id, title, children, nextId }) => {
