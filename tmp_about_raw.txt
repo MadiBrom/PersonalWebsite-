@@ -1,0 +1,42 @@
+﻿import React from "react";
+import Teaching from "./teaching/Teaching";
+import Education from "./education/Education";
+import "./about.css";
+
+const SectionWrapper = ({ id, title, children, nextId }) => {
+  const scrollNext = () => {
+    if (!nextId) return;
+    const el = document.getElementById(nextId);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <section id={id} className="about-section">
+      <div className="about-section-inner">
+        <h2 className="about-section-title">{title}</h2>
+        <div className="about-section-content">{children}</div>
+      </div>
+      {nextId && (
+        <button className="about-next" onClick={scrollNext} aria-label="Next section">â†“</button>
+      )}
+    </section>
+  );
+};
+
+const About = () => {
+  return (
+    <div className="about-snap">
+      <SectionWrapper id="education" title="Education" nextId="teaching">
+        <Education />
+      </SectionWrapper>
+
+      <SectionWrapper id="teaching" title="Teaching">
+        <Teaching />
+      </SectionWrapper>
+    </div>
+  );
+};
+
+export default About;
+
+
