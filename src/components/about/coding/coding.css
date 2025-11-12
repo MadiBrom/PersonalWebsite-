@@ -1,4 +1,3 @@
-/* Main container for the page */
 .container {
     display: flex;
     flex-direction: column;
@@ -9,13 +8,12 @@
       radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
     background-size: 80px 80px;
     background-position: 0 0, 40px 40px;
-    overflow-y: auto; /* Allow scrolling */
+    overflow-y: auto;
   }
   
-  /* Welcome message styling */
   .welcomeText {
     font-size: 3rem;
-    color: #6200FF; /* Neon purple */
+    color: #6200FF; 
     text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
     margin: 20px 0;
     text-align: center;
@@ -24,22 +22,22 @@
   }
   
   .fade-out {
-    opacity: 0; /* Fully fade out */
+    opacity: 0;
   }
   
-  /* Projects grid container */
+
   .projectContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Space between grid items */
-    width: 100%; /* Full width */
-    max-width: 1200px; /* Limit container width */
-    margin: 20px auto; /* Center grid */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    gap: 20px; 
+    width: 100%;
+    max-width: 1200px; 
+    margin: 20px auto; 
   }
   
-  /* Individual project card */
+
   .projectCard {
-    background-color: #2C2C54; /* Deep space color */
+    background-color: #2C2C54;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -48,36 +46,34 @@
     height: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Space out content inside the card */
+    justify-content: space-between; 
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
   }
   
   .projectCard:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   }
   
-  /* Title inside project card */
   .projectTitle {
     font-size: 1.5rem;
-    color: #6200FF; /* Neon purple */
+    color: #6200FF;
     margin-bottom: 10px;
     text-shadow: 2px 2px 1px black;
   }
   
-  /* Description inside project card */
+  
   .projectDescription {
     font-size: 1rem;
-    color: #D8BFD8; /* Softer purple */
+    color: #D8BFD8; 
     margin-bottom: 20px;
   }
   
-  /* Button inside project card */
   .projectLink {
     font-size: 1rem;
     color: #FFFFFF;
-    background-color: #6200FF; /* Neon purple */
+    background-color: #6200FF;
     padding: 10px 15px;
     border-radius: 5px;
     text-decoration: none;
@@ -85,6 +81,6 @@
   }
   
   .projectLink:hover {
-    background-color: #8A00FF; /* Darker neon purple */
+    background-color: #8A00FF;
   }
   
