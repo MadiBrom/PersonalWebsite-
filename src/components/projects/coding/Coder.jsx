@@ -7,7 +7,6 @@ import PORTFOLIO from "./previews/portfolio.png";
 const projects = [
   {
     title: "The Digital Respite",
-    tagline: "Tactile web toys for calm focus",
     description:
       "A collection of calming, interactive fidgets built to reduce noise and increase focus. Small reactions, gentle feedback, and accessible controls make it easy to decompress for a minute and reset.",
     image: TDR,
@@ -22,7 +21,6 @@ const projects = [
   },
   {
     title: "Yarnia",
-    tagline: "Rich text social space for fan works",
     description:
       "A reader writer community inspired by AO3 style discovery. Clean composition tools, smart tagging, and inclusive discovery so fans can write, share, and find stories they love.",
     image: YARNIA,
@@ -37,7 +35,6 @@ const projects = [
   },
   {
     title: "Portfolio Website",
-    tagline: "Personal site with a forest library vibe",
     description:
       "Responsive portfolio that shows projects, teaching, and creative work. Custom palette, accessible patterns, and simple animations to keep the focus on the work.",
     image: PORTFOLIO,
@@ -175,7 +172,6 @@ const Card = ({ project, onQuickView }) => {
       <div className="cardInner" ref={ref}>
         <div className="thumb" style={{ backgroundImage: `url(${project.image})` }}>
           <div className="thumbOverlay" />
-          <span className="badge">{project.tagline}</span>
           <button
             className="quickView"
             onClick={() => onQuickView(project)}

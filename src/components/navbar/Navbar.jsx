@@ -26,9 +26,10 @@ const Navbar = () => {
             aria-label="Toggle menu"
             aria-expanded={open}
             aria-controls="site-menu"
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span className="menu-icon" aria-hidden="true">☰</span>
+            onClick={() => setOpen((v) => !v)}>
+            <span className="menu-icon" aria-hidden="true">
+              ☰
+            </span>
           </button>
           {open && (
             <nav id="site-menu" className="menu-dropdown" aria-label="Site">
@@ -38,9 +39,9 @@ const Navbar = () => {
               <Link to="/projects" className="menu-item" onClick={() => setOpen(false)}>
                 Projects
               </Link>
-              <Link to="/contact" className="menu-item" onClick={() => setOpen(false)}>
+              {/* <Link to="/contact" className="menu-item" onClick={() => setOpen(false)}>
                 Contact
-              </Link>
+              </Link> */}
             </nav>
           )}
         </div>

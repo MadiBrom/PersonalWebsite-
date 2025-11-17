@@ -1,7 +1,7 @@
-import React from 'react';
-import Coding from './coding/Coder';
-import Art from './art/Art';
-import "./projects.css";  
+import React from "react";
+import Coding from "./coding/Coder";
+import Art from "./art/Art";
+import "./projects.css";
 
 const SectionWrapper = ({ id, title, children, nextId }) => {
   const scrollNext = () => {
@@ -17,7 +17,9 @@ const SectionWrapper = ({ id, title, children, nextId }) => {
         <div className="about-section-content">{children}</div>
       </div>
       {nextId && (
-        <button className="about-next" onClick={scrollNext} aria-label="Next section">↓</button>
+        <button className="about-next" onClick={scrollNext} aria-label="Next section">
+          ↓
+        </button>
       )}
     </section>
   );
@@ -30,12 +32,11 @@ const Projects = () => {
         <Coding />
       </SectionWrapper>
 
-      <SectionWrapper id="art" title="Art">
+      {/* <SectionWrapper id="art" title="Art">
         <Art />
-      </SectionWrapper>
+      </SectionWrapper> */}
     </div>
   );
 };
 
 export default Projects;
-
