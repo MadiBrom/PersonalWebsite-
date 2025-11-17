@@ -70,12 +70,25 @@ const roles = [
     ],
     mascot: COCO,
   },
-].sort((a, b) => (a.start > b.start ? 1 : -1));
+].sort((a, b) => (a.start < b.start ? 1 : -1));
 
 const Teaching = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const monthNames = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
 
   const fmtLong = (iso) => {
     if (!iso) return "";
@@ -86,11 +99,18 @@ const Teaching = () => {
     return `${name} ${y}`;
   };
 
-  const fullRange = (start, end) => `${fmtLong(start)} – ${fmtLong(end)}`;
+  const fullRange = (start, end) => `${fmtLong(start)} - ${fmtLong(end)}`;
+  const earliestYear = roles.reduce((min, entry) => {
+    const year = parseInt(entry.start.split("-")[0], 10);
+    if (Number.isNaN(year)) {
+      return min;
+    }
+    return Math.min(min, year);
+  }, Number.POSITIVE_INFINITY);
 
   return (
     <div className="timeline">
-      <div className="timeline-label top">2022</div>
+      <div className="timeline-label top">NOW</div>
 
       <div className="timeline-items">
         {roles.map((item, idx) => {
@@ -131,9 +151,12 @@ const Teaching = () => {
         })}
       </div>
 
-      <div className="timeline-label bottom">NOW</div>
+      <div className="timeline-label bottom">
+        {Number.isFinite(earliestYear) ? earliestYear : ""}
+      </div>
     </div>
   );
 };
 
 export default Teaching;
+

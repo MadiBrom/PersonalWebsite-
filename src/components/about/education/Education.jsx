@@ -24,11 +24,19 @@ const items = [
   },
 ];
 
+const Dot = () => (
+  <span className="edu-sep" aria-hidden="true">
+    &middot;
+  </span>
+);
+
 const Education = ({ showHeading = false }) => {
   return (
     <section className="edu" aria-labelledby="edu-heading">
       {showHeading && (
-        <h2 id="edu-heading" className="edu-heading">Education</h2>
+        <h2 id="edu-heading" className="edu-heading">
+          Education
+        </h2>
       )}
 
       <ul className="edu-list" role="list">
@@ -41,14 +49,28 @@ const Education = ({ showHeading = false }) => {
             <div className="edu-main">
               <div className="edu-top">
                 <span className="edu-school">{e.school}</span>
-                {e.location && <span className="edu-sep">•</span>}
-                {e.location && <span className="edu-location">{e.location}</span>}
+                {e.location && (
+                  <>
+                    <Dot />
+                    <span className="edu-location">{e.location}</span>
+                  </>
+                )}
               </div>
 
               <div className="edu-bottom">
                 <span className="edu-credential">{e.credential}</span>
-                {e.honors && <span className="edu-meta"> • {e.honors}</span>}
-                {e.extra && <span className="edu-meta"> • {e.extra}</span>}
+                {e.honors && (
+                  <>
+                    <Dot />
+                    <span className="edu-meta">{e.honors}</span>
+                  </>
+                )}
+                {e.extra && (
+                  <>
+                    <Dot />
+                    <span className="edu-meta">{e.extra}</span>
+                  </>
+                )}
               </div>
             </div>
 

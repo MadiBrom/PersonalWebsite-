@@ -1,6 +1,9 @@
 .edu {
-  max-width: 820px;
+  width: min(100%, 1100px);
   margin: 0 auto;
+  padding: 0 clamp(24px, 6vw, 90px);
+  font-size: 1rem;
+  line-height: 1.35;
 }
 
 .edu-heading {
@@ -14,16 +17,18 @@
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.75rem;
+  gap: 1.25rem;
 }
 
 
 .edu-item {
+  --logo-size: 52px;
+  --logo-col: 68px;
   display: grid;
-  grid-template-columns: 48px 1fr max-content;
-  column-gap: 0.75rem;
+  grid-template-columns: var(--logo-col) 1fr max-content;
+  column-gap: 1.15rem;
   align-items: start;
-  padding: 0.75rem 0;
+  padding: 1.2rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -32,8 +37,8 @@
 }
 
 .edu-logo {
-  width: 48px;
-  height: 48px;
+  width: var(--logo-size);
+  height: var(--logo-size);
   border-radius: 8px;
   background: color-mix(in oklab, currentColor 10%, transparent);
   display: grid;
@@ -42,8 +47,8 @@
 }
 
 .edu-logo img {
-  width: 36px;
-  height: 36px;
+  width: calc(var(--logo-size) - 12px);
+  height: calc(var(--logo-size) - 12px);
   object-fit: contain;
   filter: none;
   opacity: 1;
@@ -58,11 +63,14 @@
   align-items: baseline;
 }
 
-.edu-school { font-weight: 600; }
+.edu-school { font-weight: 600; font-size: 1.05rem; }
 .edu-credential { font-weight: 500; }
 .edu-meta,
 .edu-location { opacity: 0.8; }
-.edu-sep { opacity: 0.6; }
+.edu-sep {
+  opacity: 0.6;
+  margin: 0 0.4rem;
+}
 
 
 .edu-dates {
@@ -77,28 +85,47 @@
 
 @media (max-width: 500px) {
   .edu-item {
-    grid-template-columns: 40px 1fr;
+    --logo-size: 44px;
+    --logo-col: 48px;
+    grid-template-columns: var(--logo-col) 1fr;
     grid-template-areas:
       "logo main"
       "logo date";
     row-gap: 0.25rem;
   }
-  .edu-logo { grid-area: logo; width: 40px; height: 40px; }
+  .edu-logo { grid-area: logo; }
   .edu-main { grid-area: main; }
   .edu-dates { grid-area: date; justify-self: start; margin-top: 0.25rem; }
 }
 
 /* Scale up on larger screens */
 @media (min-width: 768px) {
-  .edu-item { column-gap: 1rem; padding: 1rem 0; }
-  .edu-logo { width: 64px; height: 64px; }
-  .edu-logo img { width: 52px; height: 52px; }
+  .edu-list { gap: 1.6rem; }
+  .edu-item {
+    --logo-size: 64px;
+    --logo-col: 84px;
+    column-gap: 1.5rem;
+    padding: 1.4rem 0;
+  }
   .edu-heading { font-size: 1.5rem; }
+  .edu-school { font-size: 1.15rem; }
+  .edu-credential { font-size: 1.05rem; }
 }
 
 @media (min-width: 1024px) {
-  .edu-logo { width: 80px; height: 80px; }
-  .edu-logo img { width: 66px; height: 66px; }
-  .edu-school { font-size: 1.1rem; }
-  .edu-credential { font-size: 1rem; }
+  .edu {
+    padding: 0 clamp(40px, 7vw, 120px);
+    font-size: 1.05rem;
+  }
+  .edu-item {
+    --logo-size: 78px;
+    --logo-col: 108px;
+    padding: 1.65rem 0;
+  }
+  .edu-logo img { width: calc(var(--logo-size) - 14px); }
+  .edu-school { font-size: 1.25rem; }
+  .edu-credential { font-size: 1.1rem; }
+  .edu-meta,
+  .edu-location,
+  .edu-dates { font-size: 1rem; }
 }
