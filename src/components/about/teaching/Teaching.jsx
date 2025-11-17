@@ -6,7 +6,6 @@ import IRONMEN from "./ironmen.jpg";
 import COCO from "./coco.jpg";
 import "./teaching.css";
 
-
 const roles = [
   {
     org: "Central Elementary School",
@@ -76,58 +75,62 @@ const roles = [
 const Teaching = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
-  const monthNames = [
-    "Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"
-  ];
+  const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
   const fmtLong = (iso) => {
     if (!iso) return "";
-    if (iso === "Present") return "Present";
+    if (iso === "Present" || iso === "Now") return "Present";
     const [y, m] = iso.split("-");
     const mm = parseInt(m || "1", 10);
     const name = monthNames[Math.max(1, Math.min(mm, 12)) - 1];
     return `${name} ${y}`;
   };
-  const fullRange = (start, end) => `${fmtLong(start)} – ${end === "Present" ? "Present" : fmtLong(end)}`;
+
+  const fullRange = (start, end) => `${fmtLong(start)} – ${fmtLong(end)}`;
 
   return (
     <div className="timeline">
       <div className="timeline-label top">2022</div>
-      {roles.map((item, idx) => {
-        const open = openIndex === idx;
-        return (
-          <div key={idx} className="timeline-item">
-            <div className="timeline-marker">
-              {item.mascot ? (
-                <img src={item.mascot} alt={`${item.org} mascot`} />
-              ) : (
-                <div className="mascot-placeholder" aria-hidden="true" />
-              )}
-            </div>
 
-            <div className="timeline-content">
-              <h3 className="org">{item.org}</h3>
-              <p className="role">{item.role}</p>
-              <button
-                className="bullets-toggle"
-                aria-expanded={open}
-                onClick={() => setOpenIndex(open ? null : idx)}
-              >
-                {open ? "Hide details" : "Show details"}
-              </button>
-              {open && (
-                <>
-                <p className="dates-full">{fullRange(item.start, item.end)}</p>
-                <ul className="bullets">
-                  {item.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
-                  ))}
-                </ul>
-                </>
-              )}
+      <div className="timeline-items">
+        {roles.map((item, idx) => {
+          const open = openIndex === idx;
+          return (
+            <div key={idx} className="timeline-item">
+              <div className="timeline-marker">
+                {item.mascot ? (
+                  <img src={item.mascot} alt={`${item.org} mascot`} />
+                ) : (
+                  <div className="mascot-placeholder" aria-hidden="true" />
+                )}
+              </div>
+
+              <div className="timeline-content">
+                <h3 className="org">{item.org}</h3>
+                <p className="role">{item.role}</p>
+                <p className="dates-line">{fullRange(item.start, item.end)}</p>
+
+                <button
+                  className="bullets-toggle"
+                  aria-expanded={open}
+                  onClick={() => setOpenIndex(open ? null : idx)}
+                >
+                  {open ? "Hide details" : "Show details"}
+                </button>
+
+                {open && (
+                  <ul className="bullets">
+                    {item.bullets.map((b, i) => (
+                      <li key={i}>{b}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
+
       <div className="timeline-label bottom">NOW</div>
     </div>
   );

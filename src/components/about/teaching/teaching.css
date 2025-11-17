@@ -1,10 +1,10 @@
-/* Timeline consistent layout across sizes */
 .timeline {
   position: relative;
   margin: 0 auto;
   max-width: 1100px;
-  --date-col: 80px;   /* width for dates column */
-  --marker-col: 72px; /* width for marker column */
+  --date-col: 80px;
+  --marker-col: 72px;
+  padding: 8px 0 24px 0;
 }
 
 .timeline::before {
@@ -13,8 +13,14 @@
   top: 0;
   bottom: 0;
   left: calc(var(--marker-col) / 2);
-  width: 2px;
-  background: rgba(255, 255, 255, 0.25);
+  width: 4px;
+  background: rgba(255, 255, 255, 0.438);
+}
+
+.timeline-items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .timeline-item {
@@ -23,15 +29,15 @@
   grid-template-columns: var(--marker-col) 1fr;
   column-gap: 12px;
   align-items: start;
-  margin: 28px 0;
 }
 
 .timeline-marker {
   grid-column: 1;
   display: flex;
-  align-items: flex-start; /* keep marker aligned with title */
+  align-items: flex-start;
   justify-content: center;
-  padding-top: 6px; /* slight nudge to align with heading baseline */
+  min-height: 72px;
+  padding-top: 6px;
 }
 
 .timeline-marker img,
@@ -49,8 +55,20 @@
   color: #fff;
 }
 
-.org { margin: 0; font-size: clamp(1.1rem, 2.5vw, 1.3rem); }
-.role { margin: 6px 0 8px 0; opacity: 0.9; }
+.org {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+}
+.role {
+  margin: 6px 0 2px 0;
+  opacity: 0.9;
+}
+
+.dates-line {
+  margin: 0 0 10px 0;
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
 
 .bullets-toggle {
   background: rgba(98, 0, 255, 0.9);
@@ -59,25 +77,42 @@
   border-radius: 8px;
   padding: 8px 10px;
   cursor: pointer;
+  line-height: 1;
 }
 
-.bullets { margin: 10px 0 0 20px; }
-
-.timeline-dates { display: none; }
+.bullets {
+  margin: 10px 0 0 20px;
+}
 
 @media (max-width: 768px) {
-  .timeline { --marker-col: 56px; }
-  .timeline-item { column-gap: 10px; }
+  .timeline {
+    --marker-col: 56px;
+  }
+  .timeline-item {
+    column-gap: 10px;
+  }
+  .timeline-marker {
+    min-height: 56px;
+  }
+  .timeline-marker img,
+  .mascot-placeholder {
+    width: 56px;
+    height: 56px;
+  }
 }
-
 
 .timeline-label {
-  position: absolute;
+  position: sticky;
+  top: 8px;
   left: 0;
   transform: translateX(-8px);
-  color: rgba(255,255,255,0.8);
-  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2.5rem;
+  z-index: 1;
 }
-.timeline-label.top { top: -20px; }
-.timeline-label.bottom { bottom: 0; }
-.dates-full { opacity: 0.9; margin-bottom: 6px; }
+.timeline-label.top {
+  align-self: flex-start;
+}
+.timeline-label.bottom {
+  align-self: flex-end;
+}
